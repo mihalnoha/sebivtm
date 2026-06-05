@@ -1,1 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #F5F5F5;
+    color: #333333;
+}
+
+/* Navigace */
+.navbar {
+    background: #1976D2;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* Karty */
+.card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 18px;
+}
+
+.card-yellow {
+    background: #FFDF79;
+}
+
+.card h1 {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.card h2 {
+    font-size: 20px;
+    color: #1976D2;
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #333333;
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.text-muted {
+    font-size: 16px;
+    color: #555555;
+    text-align: center;
+}
+
+/* Obrázek */
+.uvod-img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Text */
+.center-text {
+    text-align: center;
+    font-size: 16px;
+    color: #555555;
+    padding: 8px 0;
+}
+
+/* Tlačítko */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #1976D2;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1565C0;
+}
+
+/* Kontakt */
+.contact-card {
+    cursor: pointer;
+}
+
+.contact-label {
+    font-size: 16px;
+    color: #888888;
+    padding-bottom: 8px;
+}
+
+.contact-value {
+    font-size: 22px;
+    color: #1976D2;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+
+/* Mobilní menu */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background: #1976D2;
+        padding: 8px;
+        z-index: 999;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 12px 16px;
+        font-size: 18px;
+    }
+}
