@@ -1,16 +1,28 @@
-// Inicializace mapy trasy
-var mapTrasa = L.map('mapTrasa').setView([50.490000, 15.270000], 13);
+// Inicializace mapy trasy - zoom tlačítka vpravo dole
+var mapTrasa = L.map('mapTrasa', {
+    zoomControl: false  // Vypnout výchozí zoom
+});
+
+// NOVÉ - zoom tlačítka vpravo dole
+L.control.zoom({
+    position: 'bottomright'
+}).addTo(mapTrasa);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(mapTrasa);
 
 // Červená trasa z trasaBody
-L.polyline(trasaBody, {
+var polyline = L.polyline(trasaBody, {
     color: 'red',
     weight: 4,
     opacity: 0.8
 }).addTo(mapTrasa);
+
+// Automatické vycentrování a zoom podle trasy
+mapTrasa.fitBounds(polyline.getBounds(), {
+    padding: [20, 20]
+});
 
 // Start marker
 L.marker([50.465403, 15.306016])
@@ -22,7 +34,7 @@ L.marker([50.466404, 15.340512])
     .addTo(mapTrasa)
     .bindPopup('<b>Cíl</b><br>Konec trasy');
 
-// NOVÉ - lepší ikony zastávek
+// Ikony zastávek
 var checkpointIcon = L.divIcon({
     className: '',
     html: '<div style="background:#1976D2; color:white; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-size:18px; border:2px solid white; box-shadow:0 2px 4px rgba(0,0,0,0.5);">🍽️</div>',
