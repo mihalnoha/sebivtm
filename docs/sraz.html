@@ -40,10 +40,18 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/main.js"></script>
     <script>
-        var map = L.map('mapSraz').setView([50.465403, 15.306016], 15);
+        var map = L.map('mapSraz', {
+            zoomControl: false
+        }).setView([50.465403, 15.306016], 15);
+
+        L.control.zoom({
+            position: 'bottomright'
+        }).addTo(map);
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
+
         L.marker([50.465403, 15.306016])
             .addTo(map)
             .bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov')
