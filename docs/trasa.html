@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trasa - ŠebiVTM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <style>
+        .checkpoint-icon {
+            font-size: 24px;
+            background: none;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">🚴 ŠebiVTM</div>
+        <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">🏠 Domů</a></li>
+            <li><a href="sraz.html">📍 Sraz</a></li>
+            <li><a href="trasa.html" class="active">🚴 Trasa</a></li>
+            <li><a href="kdy-to-bude.html">📅 Kdy to bude</a></li>
+            <li><a href="pravidla.html">📋 Pravidla</a></li>
+            <li><a href="kontakt.html">📞 Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <!-- Info karta -->
+        <div class="card">
+            <p style="text-align: center; font-size: 18px;">📏 Délka: <b>33.8 km</b></p>
+            <p style="text-align: center; font-size: 18px;">⛰️ Převýšení: <b>+247 m / -287 m</b></p>
+        </div>
+
+        <!-- Tlačítko zastávky -->
+        <button class="btn-primary" onclick="toggleCheckpoints()">📍 Zobrazit zastávky</button>
+
+        <!-- Mapa -->
+        <div class="card">
+            <div id="mapTrasa" style="height: 500px; border-radius: 8px;"></div>
+        </div>
+
+        <!-- Seznam zastávek -->
+        <div id="checkpointList" style="display: none;">
+            <div class="card">
+                <h3 style="color: #1976D2;">🍽️ Bistro pod Kapličkou</h3>
+                <p>5 km od startu, 28 km do cíle</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #1976D2;">🍽️ Chata Nebákov</h3>
+                <p>12 km od startu, 21 km do cíle</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #1976D2;">🍽️ Křenovský šenk</h3>
+                <p>21 km od startu, 12 km do cíle</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #1976D2;">🍽️ Občerstvení TřiJedničky</h3>
+                <p>5.6 km do cíle, od startu už nikoho nezajímá</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #00BCD4;">🏊 Koupání na Věžáku</h3>
+                <p>15 km od startu, 18 km do cíle</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/trasa-body.js"></script>
+    <script src="js/trasa.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

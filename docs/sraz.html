@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sraz - ŠebiVTM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">🚴 ŠebiVTM</div>
+        <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">🏠 Domů</a></li>
+            <li><a href="sraz.html" class="active">📍 Sraz</a></li>
+            <li><a href="trasa.html">🚴 Trasa</a></li>
+            <li><a href="kdy-to-bude.html">📅 Kdy to bude</a></li>
+            <li><a href="pravidla.html">📋 Pravidla</a></li>
+            <li><a href="kontakt.html">📞 Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <!-- Info panel -->
+        <div class="card">
+            <h2 style="color: #1976D2; text-align: center;">📍 Místo srazu</h2>
+            <p style="text-align: center; color: #333333;">U Speedyho Gonzalese · Prachov 37</p>
+        </div>
+
+        <!-- Mapa -->
+        <div class="card">
+            <div id="mapSraz" style="height: 400px; border-radius: 8px;"></div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        var map = L.map('mapSraz').setView([50.465403, 15.306016], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+        L.marker([50.465403, 15.306016])
+            .addTo(map)
+            .bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov')
+            .openPopup();
+    </script>
+</body>
+</html>
