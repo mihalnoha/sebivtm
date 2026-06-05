@@ -22,17 +22,19 @@ L.marker([50.466404, 15.340512])
     .addTo(mapTrasa)
     .bindPopup('<b>Cíl</b><br>Konec trasy');
 
-// Checkpointy
+// NOVÉ - lepší ikony zastávek
 var checkpointIcon = L.divIcon({
-    className: 'checkpoint-icon',
-    html: '🍽️',
-    iconSize: [30, 30]
+    className: '',
+    html: '<div style="background:#1976D2; color:white; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-size:18px; border:2px solid white; box-shadow:0 2px 4px rgba(0,0,0,0.5);">🍽️</div>',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
 });
 
 var swimmingIcon = L.divIcon({
-    className: 'checkpoint-icon',
-    html: '🏊',
-    iconSize: [30, 30]
+    className: '',
+    html: '<div style="background:#00BCD4; color:white; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-size:18px; border:2px solid white; box-shadow:0 2px 4px rgba(0,0,0,0.5);">🏊</div>',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
 });
 
 var checkpoints = [
