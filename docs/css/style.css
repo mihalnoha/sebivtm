@@ -309,5 +309,5 @@ body {
 .leaflet-top, 
 .leaflet-bottom, 
 .leaflet-control {
-    z-index: 10 !important;
+    z-index: 900 !important;
 }
