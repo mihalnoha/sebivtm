@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sdílej - ŠebiVTM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specifické styly pouze pro tuto sdílecí stránku */
+        .share-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        @media (min-width: 600px) {
+            .share-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .share-card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, opacity 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .share-card-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        .share-wa { background: #25D366; }
+        .share-fb { background: #1877F2; }
+        .share-msg { background: #0084FF; }
+        .share-mail { background: #757575; }
+        .share-copy { background: #1976D2; }
+        
+        .status-msg {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2E7D32;
+            margin-top: 8px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Globální navigace se načte sem -->
+    <nav class="navbar" id="globalNavbar"></nav>
+
+    <div class="container">
+
+        <div class="card">
+            <h1>📢 Pošli odkaz kamarádům</h1>
+            <p class="subtitle">Pomoz nám rozšířit info o memoriálu dál.</p>
+        </div>
+
+        <!-- Mřížka s možnostmi sdílení -->
+        <div class="share-container">
+            
+            <!-- WhatsApp -->
+            <a href="https://whatsapp.com" target="_blank" class="share-card-btn share-wa">
+                💬 WhatsApp
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://facebook.com" target="_blank" class="share-card-btn share-fb">
+                📘 Facebook
+            </a>
+
+            <!-- Messenger -->
+            <a href="fb-messenger://share/?link=https%3A%2F%2Fmihalnoha.github.io%2Fsebivtm%2Findex.html" target="_blank" class="share-card-btn share-msg">
+                ⚡ Messenger
+            </a>
+
+            <!-- E-mail -->
+            <a href="mailto:?subject=Memori%C3%A1l%20%C5%A0ebiVTM&body=Ahoj%2C%20mrkni%20na%20str%C3%A1nky%20cyklistick%C3%A9ho%20memori%C3%A1lu%20%C5%A0ebiVTM!%20Najde%C5%A1%20tam%20trasu%2C%20m%C3%ADsto%20srazu%20i%20odpo%C4%8Det%20do%20startu.%20Tak%20mrkev%20v%20zim%C4%9B!%20%F0%9F%9B%B4%20https%3A%2F%2Fmihalnoha.github.io%2Fsebivtm%2Findex.html" class="share-card-btn share-mail">
+                ✉️ E-mail
+            </a>
+
+            <!-- Kopírovat odkaz (Tlačítko) -->
+            <button onclick="copyLink()" class="share-card-btn share-copy">
+                🔗 Zkopírovat odkaz
+            </button>
+
+            <!-- Systémové sdílení telefonu -->
+            <button onclick="systemShare()" id="systemShareBtn" class="share-card-btn share-copy" style="background: #E040FB; display: none;">
+                📱 Sdílet přes telefon
+            </button>
+
+        </div>
+
+        <div id="copyStatus" class="status-msg">✅ Odkaz byl zkopírován do schránky!</div>
+
+    </div>
+
+    <script src="js/menu.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        const shareUrl = 'https://github.io';
+        const shareText = 'Ahoj, mrkni na stránky cyklistického memoriálu ŠebiVTM! Najdeš tam trasu, místo srazu i odpočet do startu. Tak mrkev v zimě! 🚴';
+
+        // Funkce pro zkopírování odkazu
+        function copyLink() {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const status = document.getElementById('copyStatus');
+                status.style.display = 'block';
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 3000);
+            }).catch(err => {
+                console.error('Odkaz se nepodařilo zkopírovat:', err);
+            });
+        }
+
+        // Zobrazení nativního tlačítka pro mobily, pokud ho systém podporuje
+        if (navigator.share) {
+            document.getElementById('systemShareBtn').style.display = 'flex';
+        }
+
+        function systemShare() {
+            navigator.share({
+                title: 'Memoriál ŠebiVTM',
+                text: shareText,
+                url: shareUrl
+            }).catch(console.error);
+        }
+    </script>
+</body>
+</html>
