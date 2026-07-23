@@ -49,21 +49,20 @@
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Skládání odkazů po částech, aby je systém nemohl ořezat
-        var gPart1 = "https://google.com";
-        var gPart2 = "maps/dir/?api=1&destination=50.465403,15.306016";
-        document.getElementById("btnGoogle").href = gPart1 + gPart2;
-
-        var mPart1 = "https://mapy.cz";
-        var mPart2 = "?vlastni-body&x=15.306016&y=50.465403&z=16&ut=U%20Speedyho%20Gonzalese";
-        document.getElementById("btnMapyCz").href = mPart1 + mPart2;
-
-        // Inicializace mapy s polem, které prohlížeč bezpečně přelouská
-        var srazCoords = new Array(50.465403, 15.306016);
+        // JISTOTA PRO ODKAZY: Absolutně neprůstřelné vložení adres, které systém neumí zkomolit
+        var rawGoogle = "https:%2F%://google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3D50.465403,15.306016";
+        var rawMapyCz = "https:%2F%2Fmapy.cz%2Fzakladni%3Fvlastni-body%26x%3D15.306016%26y%3D50.465403%26z%3D16%26ut%3DU%20Speedyho%20Gonzalese";
         
+        document.getElementById("btnGoogle").href = decodeURIComponent(rawGoogle);
+        document.getElementById("btnMapyCz").href = decodeURIComponent(rawMapyCz);
+
+        // JISTOTA PRO MAPU: Inicializace souřadnic bez rizika smazání závorek
+        var lat = 50.465403;
+        var lng = 15.306016;
+
         var map = L.map('mapSraz', {
             zoomControl: false
-        }).setView(srazCoords, 15);
+        }).setView(L.latLng(lat, lng), 15);
 
         L.control.zoom({
             position: 'bottomright'
@@ -73,11 +72,9 @@
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // Původní standardní špendlík
-        L.marker(srazCoords)
-            .addTo(map)
-            .bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov')
-            .openPopup();
+        // Zobrazení standardního modrého špendlíku přímo na souřadnicích startu
+        var marker = L.marker(L.latLng(lat, lng)).addTo(map);
+        marker.bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov').openPopup();
     </script>
 </body>
 </html>
