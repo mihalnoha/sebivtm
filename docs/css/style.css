@@ -305,7 +305,9 @@ body {
     position: relative !important;
     overflow: hidden !important;
 }
-/* Absolutní ponížení tlačítek mapy pod úroveň hlavního menu a lišty */
-.leaflet-control-container {
-    z-index: 500 !important;
+/* STOPROCENTNÍ SRAŽENÍ OVLÁDACÍCH PRVKŮ MAPY POD ÚROVEŇ MENU */
+.leaflet-top, 
+.leaflet-bottom, 
+.leaflet-control {
+    z-index: 10 !important;
 }
