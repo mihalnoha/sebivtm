@@ -305,4 +305,7 @@ body {
     position: relative !important;
     overflow: hidden !important;
 }
-
+/* Absolutní ponížení tlačítek mapy pod úroveň hlavního menu a lišty */
+.leaflet-control-container {
+    z-index: 500 !important;
+}
