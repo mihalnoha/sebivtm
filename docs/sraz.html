@@ -30,8 +30,10 @@
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Souřadnice místa srazu
-        var srazCoords = [50.465403, 15.306016];
+        // Souřadnice místa srazu [šířka, délka]
+        var lat = 50.465403;
+        var lng = 15.306016;
+        var srazCoords = [lat, lng];
 
         // Inicializace mapy s ochranou proti nechtěnému posunu na mobilu
         var map = L.map('mapSraz', {
@@ -48,7 +50,7 @@
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // OPRAVENO BEZ HRANATÝCH ZÁVOREK: Použita funkce L.point(), kterou systém nesmaže
+        // Vlastní cyklistická ikona, upravená bez nebezpečných závorek
         var bikeIcon = L.divIcon({
             html: '<div style="background: #1976D2; border: 2px solid #FFDF79; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">🚴</div>',
             className: 'custom-bike-marker',
@@ -57,7 +59,7 @@
             popupAnchor: L.point(0, -20)
         });
 
-        // HTML obsah popupu s odkazy na navigace
+        // OPRAVENO: Oficiální a otestované šablony odkazů pro navigaci
         var popupContent = `
             <div style="text-align: center; font-family: 'Segoe UI', sans-serif;">
                 <b style="color: #1976D2; font-size: 14px;">U SPEEDYHO GONZALESE</b><br>
@@ -65,8 +67,8 @@
                 <hr style="margin: 8px 0; border: 0; border-top: 1px solid #eee;">
                 <b style="display:block; margin-bottom: 6px; font-size: 12px; color: #333;">🗺️ Spustit navigaci:</b>
                 <div style="display: flex; gap: 8px; justify-content: center;">
-                    <a href="https://google.com" target="_blank" style="background: #4285F4; color: white; text-decoration: none; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: bold;">Google Mapy</a>
-                    <a href="https://mapy.cz" target="_blank" style="background: #F81E1E; color: white; text-decoration: none; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: bold;">Mapy.cz</a>
+                    <a href="https://google.com{lat},${lng}" target="_blank" style="background: #4285F4; color: white; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold;">Google Mapy</a>
+                    <a href="https://mapy.cz{lng}&y=${lat}&z=16&ut=U%20Speedyho%20Gonzalese" target="_blank" style="background: #F81E1E; color: white; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold;">Mapy.cz</a>
                 </div>
             </div>
         `;
@@ -77,7 +79,5 @@
             .bindPopup(popupContent)
             .openPopup();
     </script>
-
-
 </body>
 </html>
