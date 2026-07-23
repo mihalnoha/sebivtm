@@ -291,3 +291,18 @@ body {
         transform: translateY(0);
     }
 }
+/* ABSOLUTNÍ POJISTKA PRO LEAFLET MAPU - OPRAVA ROZPADU */
+.leaflet-container img {
+    max-width: none !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    display: inline !important;
+}
+
+#mapSraz {
+    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
