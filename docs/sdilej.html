@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         .share-container {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
             margin-top: 16px;
-        }
-        @media (min-width: 600px) {
-            .share-container {
-                grid-template-columns: 1fr 1fr;
-            }
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .share-card-btn {
             display: flex;
@@ -38,25 +36,22 @@
             transform: translateY(-2px);
             opacity: 0.9;
         }
-        .share-wa { background: #25D366; }
-        .share-fb { background: #1877F2; }
-        .share-msg { background: #0084FF; }
-        .share-mail { background: #757575; }
         .share-copy { background: #1976D2; }
+        .share-system { background: #E040FB; }
         
         .status-msg {
             text-align: center;
             font-size: 16px;
             font-weight: bold;
             color: #2E7D32;
-            margin-top: 8px;
+            margin-top: 12px;
             display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Globální navigace se načte sem -->
+    <!-- Globální navigace -->
     <nav class="navbar" id="globalNavbar"></nav>
 
     <div class="container">
@@ -66,37 +61,16 @@
             <p class="subtitle">Pomoz nám rozšířit info o memoriálu dál.</p>
         </div>
 
-        <!-- Prověřená mřížka s plně zakódovanými URL linky -->
         <div class="share-container">
             
-            <!-- WhatsApp -->
-            <a href="https://wa.me" target="_blank" class="share-card-btn share-wa">
-                💬 WhatsApp
-            </a>
-
-            <!-- Facebook -->
-            <a href="https://facebook.com" target="_blank" class="share-card-btn share-fb">
-                📘 Facebook
-            </a>
-
-            <!-- Messenger -->
-            <a href="https://facebook.com" target="_blank" class="share-card-btn share-msg">
-                ⚡ Messenger
-            </a>
-
-            <!-- E-mail -->
-            <a href="mailto:?subject=Memori%C3%A1l%20%C5%A0ebiVTM&body=Ahoj%2C%20mrkni%20na%20str%C3%A1nky%20cyklistick%C3%A9ho%20memori%C3%A1lu%20%C5%A0ebiVTM!%20%F0%9F%9B%B4%20https%3A%2F%2Fmihalnoha%2Egithub%2Eio%2Fsebivtm%2Findex%2Ehtml" class="share-card-btn share-mail">
-                ✉️ E-mail
-            </a>
+            <!-- Tlačítko pro mobilní telefony -->
+            <button onclick="systemShare()" id="systemShareBtn" class="share-card-btn share-system" style="display: none;">
+                📱 Sdílet přes telefon
+            </button>
 
             <!-- Kopírovat odkaz -->
             <button onclick="copyLink()" class="share-card-btn share-copy">
                 🔗 Zkopírovat odkaz
-            </button>
-
-            <!-- Systémové sdílení telefonu -->
-            <button onclick="systemShare()" id="systemShareBtn" class="share-card-btn share-copy" style="background: #E040FB; display: none;">
-                📱 Sdílet přes telefon
             </button>
 
         </div>
@@ -108,20 +82,21 @@
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Oprava kopírování: Cíleně definovaný čistý textový řetězec bez možnosti oříznutí
+        // Pevně definovaná správná URL adresa
+        const shareUrl = 'https://mihalnoha.github.io/sebivtm/index.html';
+        const shareText = 'Ahoj, mrkni na stránky cyklistického memoriálu ŠebiVTM! 🚴';
+
+        // Funkce pro zkopírování odkazu
         function copyLink() {
-            var urlToCopy = 'https://mihalnoha.github.io/sebivtm/index.html';
-            
-            // Moderní metoda s fallbackem pro absolutní jistotu funkčnosti
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(urlToCopy).then(showStatus).catch(fallbackCopy);
+                navigator.clipboard.writeText(shareUrl).then(showStatus).catch(fallbackCopy);
             } else {
                 fallbackCopy();
             }
 
             function fallbackCopy() {
                 var textArea = document.createElement("textarea");
-                textArea.value = urlToCopy;
+                textArea.value = shareUrl;
                 textArea.style.position = "fixed"; 
                 document.body.appendChild(textArea);
                 textArea.focus();
@@ -144,7 +119,7 @@
             }
         }
 
-        // Podpora nativního sdílení pro mobilní telefony
+        // Aktivace systémového sdílení na mobilech
         if (navigator.share) {
             document.getElementById('systemShareBtn').style.display = 'flex';
         }
@@ -152,8 +127,8 @@
         function systemShare() {
             navigator.share({
                 title: 'Memoriál ŠebiVTM',
-                text: 'Ahoj, mrkni na stránky cyklistického memoriálu ŠebiVTM! 🚴',
-                url: 'https://mihalnoha.github.io/sebivtm/index.html'
+                text: shareText,
+                url: shareUrl
             }).catch(console.error);
         }
     </script>
