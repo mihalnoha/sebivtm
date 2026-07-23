@@ -7,15 +7,15 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121212; /* Velmi tmavé, moderní pozadí */
-    color: #E0E0E0; /* Světlé, příjemné písmo pro oči */
+    background: #E8ECEF; /* Výraznější šedé pozadí, aby karty skvěle vynikly */
+    color: #222222;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
 
 /* Navigace */
 .navbar {
-    background: #1E1E1E; /* Tmavá navigační lišta */
+    background: #1976D2;
     padding: 12px 16px;
     display: flex;
     align-items: center;
@@ -23,12 +23,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Výraznější stín v tmavém režimu */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15); /* Silnější stín pod lištou */
 }
 
 .nav-brand {
-    color: #FFFFFF;
+    color: white;
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -50,7 +49,7 @@ body {
 }
 
 .nav-menu li a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     padding: 10px 14px;
     border-radius: 8px;
@@ -61,13 +60,8 @@ body {
 
 .nav-menu li a:hover,
 .nav-menu li a.active {
-    background: rgba(255, 255, 255, 0.08);
-    color: #BB86FC; /* Moderní fialový akcent pro aktivní položku, nebo si nechte #FFFFFF */
-}
-
-.nav-menu li a.active {
+    background: rgba(255, 255, 255, 0.25); /* Výraznější aktivní prvek */
     color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.12);
 }
 
 /* Container */
@@ -79,25 +73,21 @@ body {
 
 /* Karty */
 .card {
-    background: #1E1E1E; /* Antracitový podklad karet */
-    border-radius: 16px;
+    background: #FFFFFF; /* Čistě bílé karty */
+    border-radius: 14px;
     padding: 20px;
     margin-bottom: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Hluboký stín */
+    /* Výraznější, hlubší stín pro jasné oddělení karet od šedého pozadí */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04); 
     font-size: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Jemné ohraničení karty, aby nesplývala */
+    border: 1px solid #D0D7DE; /* Jasně viditelný ohraničující rámeček */
 }
 
-/* Zachování žluté karty na úvodu s tmavým písmem pro čitelnost */
+/* Výrazná žlutá karta na úvodu */
 .card-yellow {
-    background: #FBC02D; /* Trochu sytější žlutá, aby svítila v temném režimu */
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-.card-yellow h1, 
-.card-yellow .subtitle, 
-.card-yellow .text-muted {
-    color: #111111 !important; /* Striktně tmavé písmo pouze na žluté kartě */
+    background: #FFF1C5; /* Příjemná pastelová žlutá */
+    border: 1px solid #F2C94C; /* Žlutý rámeček */
+    border-left: 6px solid #1976D2; /* Modrý akcentní pruh na boku */
 }
 
 .card h1 {
@@ -105,48 +95,44 @@ body {
     font-weight: bold;
     text-align: center;
     padding-bottom: 8px;
-    color: #FFFFFF;
+    color: #111111;
 }
 
 .card h2 {
     font-size: 22px;
-    color: #64B5F6; /* Světlejší pastelová modrá pro lepší čitelnost na tmavém */
+    color: #1976D2;
     text-align: center;
     padding-bottom: 8px;
 }
 
 .subtitle {
     font-size: 18px;
-    color: #BBBBBB;
+    color: #333333;
     text-align: center;
     padding-bottom: 8px;
 }
 
 .text-muted {
     font-size: 16px;
-    color: #888888;
+    color: #555555;
     text-align: center;
 }
 
 /* Obrázek */
 .uvod-img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
     display: block;
-    opacity: 0.9; /* Mírné ztmavení obrázku, aby v noci neoslňoval */
-    transition: opacity 0.2s;
-}
-.uvod-img:hover {
-    opacity: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* Text */
 .center-text {
     text-align: center;
     font-size: 16px;
-    color: #AAAAAA;
+    color: #444444;
     padding: 12px 0;
-    font-weight: 500;
+    font-weight: bold; /* Zvýrazněný text pod obrázkem */
 }
 
 /* Tlačítka */
@@ -162,44 +148,45 @@ body {
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 16px;
-    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background 0.15s, box-shadow 0.15s;
 }
 
 .btn-primary:hover {
-    background: #1E88E5;
+    background: #1565C0;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.45);
+    box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
 }
 
 .btn-primary:active {
     transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(25, 118, 210, 0.2);
 }
 
 /* Kontakt */
 .contact-card {
     cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-left 0.2s, padding-left 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-left 0.2s, padding-left 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .contact-card:hover {
     transform: scale(1.015);
-    border-left: 5px solid #64B5F6;
+    border-left: 6px solid #1976D2; /* Výrazný modrý proužek při najetí */
     padding-left: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-    background: #252525; /* Mírné zesvětlení karty při najetí */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background-color: #F8FAFC; /* Velmi jemné zesvětlení vnitřku karty na hover */
 }
 
 .contact-label {
     font-size: 15px;
-    color: #888888;
+    color: #666666;
     padding-bottom: 4px;
     font-weight: 500;
 }
 
 .contact-value {
     font-size: 22px;
-    color: #64B5F6;
+    color: #1976D2;
     font-weight: bold;
     text-decoration: none;
     display: block;
@@ -218,12 +205,11 @@ body {
         top: 53px;
         left: 0;
         right: 0;
-        background: #1E1E1E;
+        background: #1976D2;
         padding: 10px;
         z-index: 999;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
         gap: 4px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .nav-menu.open {
