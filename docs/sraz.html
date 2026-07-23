@@ -25,16 +25,21 @@
             <div id="mapSraz" style="height: 400px; border-radius: 8px;"></div>
         </div>
 
-        <!-- Tlačítka pod mapou -->
+        <!-- Navigační tlačítka přímo v HTML -->
         <div class="card" style="text-align: center;">
             <b style="display:block; margin-bottom: 12px; font-size: 16px; color: #333;">🗺️ Spustit navigaci na místo srazu:</b>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a id="btnGoogle" href="#" target="_blank" style="display: block; background: #4285F4; color: white; text-decoration: none; padding: 14px; border-radius: 24px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 10px rgba(66,133,244,0.3);">
+                
+                <!-- Google Mapy navigace -->
+                <a href="https://maps.app.goo.gl/6rX96sxQUoCcpm6GA" target="_blank" style="display: block; background: #4285F4; color: white; text-decoration: none; padding: 14px; border-radius: 24px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 10px rgba(66,133,244,0.3);">
                     🌐 Navigovat přes Google Mapy
                 </a>
-                <a id="btnMapyCz" href="#" target="_blank" style="display: block; background: #F81E1E; color: white; text-decoration: none; padding: 14px; border-radius: 24px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 10px rgba(248,30,30,0.3);">
+                
+                <!-- Mapy.cz navigace -->
+                <a href="https://mapy.com/cs/turisticka?source=coor&id=15.305980389793405%2C50.46530822001534&x=15.3057122&y=50.4649343&z=18" target="_blank" style="display: block; background: #F81E1E; color: white; text-decoration: none; padding: 14px; border-radius: 24px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 10px rgba(248,30,30,0.3);">
                     🗺️ Navigovat přes Mapy.cz
                 </a>
+
             </div>
         </div>
 
@@ -49,31 +54,27 @@
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // JISTOTA PRO ODKAZY: Absolutně neprůstřelné vložení adres, které systém neumí zkomolit
-        var rawGoogle = "https:%2F%://google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3D50.465403,15.306016";
-        var rawMapyCz = "https:%2F%2Fmapy.cz%2Fzakladni%3Fvlastni-body%26x%3D15.306016%26y%3D50.465403%26z%3D16%26ut%3DU%20Speedyho%20Gonzalese";
-        
-        document.getElementById("btnGoogle").href = decodeURIComponent(rawGoogle);
-        document.getElementById("btnMapyCz").href = decodeURIComponent(rawMapyCz);
-
-        // JISTOTA PRO MAPU: Inicializace souřadnic bez rizika smazání závorek
+        // Souřadnice startu
         var lat = 50.465403;
         var lng = 15.306016;
 
+        // Načtení mapy a zacentrování
         var map = L.map('mapSraz', {
             zoomControl: false
-        }).setView(L.latLng(lat, lng), 15);
+        }).setView([lat, lng], 15);
 
+        // Ovládání zoomu vpravo dole
         L.control.zoom({
             position: 'bottomright'
         }).addTo(map);
 
+        // Podkladové mapy OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // Zobrazení standardního modrého špendlíku přímo na souřadnicích startu
-        var marker = L.marker(L.latLng(lat, lng)).addTo(map);
+        // Standardní modrý špendlík na mapě
+        var marker = L.marker([lat, lng]).addTo(map);
         marker.bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov').openPopup();
     </script>
 </body>
