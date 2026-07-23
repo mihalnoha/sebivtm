@@ -15,20 +15,7 @@
     </style>
 </head>
 <body>
-
-    <nav class="navbar">
-        <div class="nav-brand">🚴 ŠebiVTM</div>
-        <button class="nav-toggle" onclick="toggleMenu()">☰</button>
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="index.html">🏠 Domů</a></li>
-            <li><a href="sraz.html">📍 Sraz</a></li>
-            <li><a href="trasa.html" class="active">🚴 Trasa</a></li>
-            <li><a href="kdy-to-bude.html">📅 Kdy to bude</a></li>
-            <li><a href="pravidla.html">📋 Pravidla</a></li>
-            <li><a href="kontakt.html">📞 Kontakt</a></li>
-        </ul>
-    </nav>
-
+<nav class="navbar" id="globalNavbar"></nav>
     <div class="container">
 
         <!-- Info karta -->
@@ -74,6 +61,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/trasa-body.js"></script>
     <script src="js/trasa.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
