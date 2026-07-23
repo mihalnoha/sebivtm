@@ -12,7 +12,14 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
-
+/* Patička webu */
+.footer {
+    text-align: center;
+    padding: 24px 0 8px 0;
+    font-size: 14px;
+    color: #666666;
+    font-weight: 500;
+}
 /* ==========================================================================
    NAVIGACE (VYLEPŠENÁ VERZE)
    ========================================================================== */
