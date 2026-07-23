@@ -7,15 +7,15 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #F5F5F5;
-    color: #333333;
-    line-height: 1.6; /* Lepší mezery mezi řádky pro snazší čtení */
-    -webkit-font-smoothing: antialiased; /* Vyhlazení písma na Apple zařízeních */
+    background: #121212; /* Velmi tmavé, moderní pozadí */
+    color: #E0E0E0; /* Světlé, příjemné písmo pro oči */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Navigace */
 .navbar {
-    background: #1976D2;
+    background: #1E1E1E; /* Tmavá navigační lišta */
     padding: 12px 16px;
     display: flex;
     align-items: center;
@@ -23,11 +23,12 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Jemný stín pod lištou */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Výraznější stín v tmavém režimu */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-brand {
-    color: white;
+    color: #FFFFFF;
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -49,7 +50,7 @@ body {
 }
 
 .nav-menu li a {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     padding: 10px 14px;
     border-radius: 8px;
@@ -60,8 +61,13 @@ body {
 
 .nav-menu li a:hover,
 .nav-menu li a.active {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: #BB86FC; /* Moderní fialový akcent pro aktivní položku, nebo si nechte #FFFFFF */
+}
+
+.nav-menu li a.active {
     color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.12);
 }
 
 /* Container */
@@ -73,18 +79,25 @@ body {
 
 /* Karty */
 .card {
-    background: #FFFFFF;
-    border-radius: 16px; /* Modernější, kulatější rohy */
-    padding: 20px;       /* Více prostoru uvnitř karty */
-    margin-bottom: 16px; /* Sjednocené mezery mezi kartami */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04); /* Velmi měkký, moderní stín */
+    background: #1E1E1E; /* Antracitový podklad karet */
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Hluboký stín */
     font-size: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.03); /* Téměř neviditelný rámeček pro prémiový vzhled */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Jemné ohraničení karty, aby nesplývala */
 }
 
+/* Zachování žluté karty na úvodu s tmavým písmem pro čitelnost */
 .card-yellow {
-    background: #FFDF79;
-    border-color: rgba(0, 0, 0, 0.05);
+    background: #FBC02D; /* Trochu sytější žlutá, aby svítila v temném režimu */
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.card-yellow h1, 
+.card-yellow .subtitle, 
+.card-yellow .text-muted {
+    color: #111111 !important; /* Striktně tmavé písmo pouze na žluté kartě */
 }
 
 .card h1 {
@@ -92,26 +105,26 @@ body {
     font-weight: bold;
     text-align: center;
     padding-bottom: 8px;
-    color: #111111;
+    color: #FFFFFF;
 }
 
 .card h2 {
     font-size: 22px;
-    color: #1976D2;
+    color: #64B5F6; /* Světlejší pastelová modrá pro lepší čitelnost na tmavém */
     text-align: center;
     padding-bottom: 8px;
 }
 
 .subtitle {
     font-size: 18px;
-    color: #444444;
+    color: #BBBBBB;
     text-align: center;
     padding-bottom: 8px;
 }
 
 .text-muted {
     font-size: 16px;
-    color: #555555;
+    color: #888888;
     text-align: center;
 }
 
@@ -120,13 +133,18 @@ body {
     width: 100%;
     border-radius: 10px;
     display: block;
+    opacity: 0.9; /* Mírné ztmavení obrázku, aby v noci neoslňoval */
+    transition: opacity 0.2s;
+}
+.uvod-img:hover {
+    opacity: 1;
 }
 
 /* Text */
 .center-text {
     text-align: center;
     font-size: 16px;
-    color: #666666;
+    color: #AAAAAA;
     padding: 12px 0;
     font-weight: 500;
 }
@@ -144,20 +162,18 @@ body {
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 16px;
-    box-shadow: 0 4px 10px rgba(25, 118, 210, 0.2);
-    /* Plynulá animace pro všechny efekty */
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s, box-shadow 0.2s;
 }
 
 .btn-primary:hover {
-    background: #1565C0;
-    transform: translateY(-2px); /* Mírné nadzvednutí na PC při najetí myší */
-    box-shadow: 0 6px 16px rgba(25, 118, 210, 0.35);
+    background: #1E88E5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.45);
 }
 
 .btn-primary:active {
-    transform: translateY(1px); /* Efekt fyzického promáčknutí při kliknutí na mobilu/PC */
-    box-shadow: 0 2px 6px rgba(25, 118, 210, 0.2);
+    transform: translateY(1px);
 }
 
 /* Kontakt */
@@ -167,27 +183,27 @@ body {
 }
 
 .contact-card:hover {
-    transform: scale(1.015); /* Jemné zvětšení karty při najetí */
-    border-left: 5px solid #1976D2; /* Stylový modrý proužek na boku */
-    padding-left: 20px; /* Zarovnání textu kvůli proužku */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    transform: scale(1.015);
+    border-left: 5px solid #64B5F6;
+    padding-left: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    background: #252525; /* Mírné zesvětlení karty při najetí */
 }
 
 .contact-label {
     font-size: 15px;
-    color: #777777;
+    color: #888888;
     padding-bottom: 4px;
     font-weight: 500;
 }
 
 .contact-value {
     font-size: 22px;
-    color: #1976D2;
+    color: #64B5F6;
     font-weight: bold;
     text-decoration: none;
     display: block;
 }
-
 
 /* Mobilní menu */
 @media (max-width: 768px) {
@@ -202,11 +218,12 @@ body {
         top: 53px;
         left: 0;
         right: 0;
-        background: #1976D2;
+        background: #1E1E1E;
         padding: 10px;
         z-index: 999;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         gap: 4px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .nav-menu.open {
