@@ -83,11 +83,10 @@ body {
     border: 1px solid #D0D7DE; /* Jasně viditelný ohraničující rámeček */
 }
 
-/* Výrazná žlutá karta na úvodu */
+/* OPRAVENO: Původní barva žluté karty bez modrého pruhu na boku */
 .card-yellow {
-    background: #FFF1C5; /* Příjemná pastelová žlutá */
-    border: 1px solid #F2C94C; /* Žlutý rámeček */
-    border-left: 6px solid #1976D2; /* Modrý akcentní pruh na boku */
+    background: #FFDF79;
+    border: 1px solid #D0D7DE;
 }
 
 .card h1 {
