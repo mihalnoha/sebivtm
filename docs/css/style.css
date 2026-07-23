@@ -81,9 +81,9 @@ body {
 
 /* Aktivní (stisknuté) tlačítko v menu na PC */
 .nav-menu li a.active {
-    background: #FFFFFF; /* Čistě bílé pozadí pro maximální zvýraznění */
-    color: #1976D2;      /* Modrý text, který ladí s lištou */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #FFDF79; /* ZMĚNĚNO: Stejná žlutá jako u karet */
+    color: #222222;      /* Tmavý text pro skvělou čitelnost na žlutém pozadí */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transform: none;
 }
 
