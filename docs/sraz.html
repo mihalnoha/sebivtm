@@ -54,28 +54,14 @@
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Souřadnice startu
-        var lat = 50.465403;
-        var lng = 15.306016;
-
-        // Načtení mapy a zacentrování
-        var map = L.map('mapSraz', {
-            zoomControl: false
-        }).setView([lat, lng], 15);
-
-        // Ovládání zoomu vpravo dole
-        L.control.zoom({
-            position: 'bottomright'
-        }).addTo(map);
-
-        // Podkladové mapy OpenStreetMap
+        var map = L.map('mapSraz').setView([50.465403, 15.306016], 15);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
-
-        // Standardní modrý špendlík na mapě
-        var marker = L.marker([lat, lng]).addTo(map);
-        marker.bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov').openPopup();
+        L.marker([50.465403, 15.306016])
+            .addTo(map)
+            .bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov')
+            .openPopup();
     </script>
 </body>
 </html>
