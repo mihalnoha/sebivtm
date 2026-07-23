@@ -63,7 +63,7 @@ body {
     text-decoration: none;
     padding: 10px 16px; /* Větší plocha pro kliknutí / pilulkový vzhled */
     border-radius: 10px; /* Modernější zaoblení tlačítek */
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 600; /* Trochu tučnější písmo pro lepší čitelnost */
     display: inline-flex;
     align-items: center;
