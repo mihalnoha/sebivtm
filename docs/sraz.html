@@ -55,10 +55,26 @@
     <script src="js/main.js"></script>
     <script>
         var map = L.map('mapSraz').setView([50.465403, 15.306016], 15);
+        
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
-        L.marker([50.465403, 15.306016])
+
+        // Bezpečné textové proměnné pro rozměry ikony, které editor neořízne
+        var sizeVal = 40;
+        var anchorVal = 20;
+
+        // Vlastní cyklistická ikona sladěná se žlutými kartami
+        var bikeIcon = L.divIcon({
+            html: '<div style="background: #1976D2; border: 2px solid #FFDF79; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">🚴</div>',
+            className: 'custom-bike-marker',
+            iconSize: String([sizeVal, sizeVal]).split(','),
+            iconAnchor: String([anchorVal, anchorVal]).split(','),
+            popupAnchor: String([0, -anchorVal]).split(',')
+        });
+
+        // Vykreslení markeru s novou ikonou kola
+        L.marker([50.465403, 15.306016], { icon: bikeIcon })
             .addTo(map)
             .bindPopup('<b>U SPEEDYHO GONZALESE</b><br>Prachov 37, Holín - Prachov')
             .openPopup();
